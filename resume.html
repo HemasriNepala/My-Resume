@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepala Hema Sri - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0f172a;
+            --secondary-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.4);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.08), transparent 25%);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--secondary-bg);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #818cf8, var(--accent));
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+            margin-left: 1rem;
+            opacity: 0.5;
+        }
+
+        .objective {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            font-style: italic;
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3), 0 0 15px var(--accent-glow);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .item-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+        }
+
+        .item-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-list, .check-list {
+            list-style: none;
+        }
+
+        .skills-list li, .check-list li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .skills-list li::before {
+            content: '▹';
+            color: var(--accent);
+            margin-right: 0.75rem;
+            font-weight: bold;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .declaration {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .declaration-sign {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .container { padding: 1.5rem; }
+            h1 { font-size: 2rem; }
+        }
+
+        /* Staggered animation delays */
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Nepala Hema Sri</h1>
+            <div class="subtitle">B.Tech Information Technology Student</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span> <a href="mailto:24pa1a12g2@vishnu.edu.in">24pa1a12g2@vishnu.edu.in</a>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span> +91-9866523479
+                </div>
+                <div class="contact-item">
+                    <span>📍</span> Bhimavaram, Andhra Pradesh
+                </div>
+                <div class="contact-item">
+                    <span>🐙</span> <a href="https://github.com/HemasriNepala" target="_blank">GitHub</a>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span> <a href="https://www.linkedin.com/jobs/" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>Career Objective</h2>
+            <p class="objective">
+                Motivated engineering student with a strong foundation in computer science, algorithms, and problem solving, seeking an opportunity to apply technical skills in real-world software and systems projects.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Education</h2>
+            <div class="grid-2">
+                <div class="item">
+                    <div class="item-header">
+                        <div class="item-title">B.Tech in Information Technology</div>
+                        <div class="item-date">2024 - 2026</div>
+                    </div>
+                    <div class="item-subtitle">Vishnu Institute of Technology, Bhimavaram</div>
+                    <div class="tag-container">
+                        <span class="tag">CGPA: 9.2 / 10 (up to 3rd semester)</span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <div class="item-title">Intermediate (MPC)</div>
+                        <div class="item-date">2022 - 2024</div>
+                    </div>
+                    <div class="item-subtitle">Sri Chaitanya Junior College, Andhra Pradesh</div>
+                    <div class="tag-container">
+                        <span class="tag">Percentage: 95%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Experience & Projects</h2>
+            
+            <div class="item" style="margin-bottom: 1.5rem;">
+                <div class="item-header">
+                    <div class="item-title">The Google Cloud Generative AI Training</div>
+                    <div class="item-date">Oct 2025 - Jan 2026</div>
+                </div>
+                <div class="item-subtitle">Internship / Training by SmartBridge (SmartInternz)</div>
+            </div>
+
+            <div class="grid-2">
+                <div class="item">
+                    <div class="item-header">
+                        <div class="item-title">Chatbot Learning Platform</div>
+                        <div class="item-date">Jan 2026</div>
+                    </div>
+                    <div class="item-subtitle">Minor Project (Web App)</div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <div class="item-title">Application Tracking System</div>
+                        <div class="item-date">Feb 2026</div>
+                    </div>
+                    <div class="item-subtitle">Minor Project (Web App)</div>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <div class="item-title">Hospital Management System Using AI</div>
+                        <div class="item-date">Mar 2026</div>
+                    </div>
+                    <div class="item-subtitle">Minor Project (Web App)</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="grid-2">
+                <div>
+                    <h2>Technical Skills</h2>
+                    <ul class="skills-list">
+                        <li><strong>Programming:</strong> Python, SQL</li>
+                        <li><strong>Web:</strong> HTML, CSS</li>
+                        <li><strong>CS Subjects:</strong> DSA, OOP, DBMS</li>
+                        <li><strong>Tools:</strong> Git & GitHub, VS Code, Google Colab</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Personal Skills</h2>
+                    <ul class="skills-list">
+                        <li>Quick Learner</li>
+                        <li>Multitasking and creative</li>
+                        <li>Time punctual</li>
+                        <li>Positive Attitude</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="grid-2">
+                <div>
+                    <h2>Achievements & Interests</h2>
+                    <ul class="skills-list">
+                        <li>Completed NPTEL course in Introduction to Quantum</li>
+                        <li><strong>Areas of Interest:</strong> Programming, Communication System</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Hobbies</h2>
+                    <ul class="skills-list">
+                        <li>Travelling</li>
+                        <li>Story Writing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="declaration">
+            <p>I hereby declare that the above written particulars are true to my knowledge and belief.</p>
+            <div class="declaration-sign">
+                <span>Place: Bhimavaram<br>Date: 25 Mar 2026</span>
+                <span>Hema Sri Nepala</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
